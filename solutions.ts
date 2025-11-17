@@ -31,17 +31,19 @@ class Person {
   }
 
   getDetails() {
-    return `Name: ${this.name}, Age: ${this.age}`;
+    return `'Name: ${this.name}, Age: ${this.age}'`;
   }
 }
 
+type Rating = 0 | 0.5 | 1 | 1.5 | 2 | 2.5 | 3 | 3.5 | 4 | 4.5 | 5;
+
 type bookType = {
   title: string;
-  rating: number;
+  rating: Rating;
 };
 
 function filterByRating<T extends bookType>(arrOfObj: T[]): T[] {
-  return arrOfObj.filter((obj) => obj.rating >= 4 && obj.rating <= 5);
+  return arrOfObj.filter((obj) => obj.rating >= 4);
 }
 
 type UserType = {
@@ -63,11 +65,9 @@ interface Book {
 }
 
 function printBookDetails(book: Book) {
-  console.log(
-    `Title: ${book.title}, Author: ${book.author}, Published: ${
-      book.publishedYear
-    }, Available: ${book.isAvailable ? "Yes" : "No"}`
-  );
+  return `Title: ${book.title}, Author: ${book.author}, Published: ${
+    book.publishedYear
+  }, Available: ${book.isAvailable ? "Yes" : "No"}`;
 }
 
 function getUniqueValues(arr1: (number | string)[], arr2: (number | string)[]) {
